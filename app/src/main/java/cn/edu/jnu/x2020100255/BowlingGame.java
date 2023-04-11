@@ -14,18 +14,16 @@ public class BowlingGame {
         for(int currentFrame=0;currentFrame<10;currentFrame++)
         {
             totalScore+=pins[currentFrameScoreIndex];
+            totalScore+=pins[currentFrameScoreIndex+1];
 
             if(isaStrike(currentFrameScoreIndex)){
-                totalScore+=pins[currentFrameScoreIndex+1];
                 totalScore+=pins[currentFrameScoreIndex+2];
             }
             else if(isaSpare(currentFrameScoreIndex)){
-                totalScore+=pins[currentFrameScoreIndex+1];
                 totalScore+=pins[currentFrameScoreIndex+2];
                 currentFrameScoreIndex++;
             }
             else{
-                totalScore+=pins[currentFrameScoreIndex+1];
                 currentFrameScoreIndex++;
             }
             currentFrameScoreIndex++;
