@@ -29,14 +29,14 @@ public class BowlingGameUnitTest {
         repeatedRoll(1,20);
         assertEquals(20,game.score());
     }
-/*    @Test
+    @Test
     public void testSpare() {
         game.roll(3);
         game.roll(7);//throw a spare
         game.roll(6);
         repeatedRoll(0,17);
         assertEquals(22,game.score());
-    }*/
+    }
 
     private void repeatedRoll(int pin, int times) {
         for (int i=0;i<times;i++){
