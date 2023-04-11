@@ -13,14 +13,25 @@ public class BowlingGame {
         for(int scoreIndex=0;scoreIndex<pins.length;scoreIndex++)
         {
             totalScore+=pins[scoreIndex];
-            //if is a spare ,will add next score and its next score into current score
+
             if(scoreIndex<19)
             {
-                if(10==pins[scoreIndex]+pins[scoreIndex+1]) {
-                    totalScore+=pins[scoreIndex+2];
+                if(isaSpare(scoreIndex)){
+                    totalScore+=pins[scoreIndex + 2];
+                }
+                if(isaStrike(scoreIndex)) {
+                    totalScore+=pins[scoreIndex + 1];
+                    totalScore+=pins[scoreIndex + 2];
                 }
             }
         }
         return totalScore;
+    }
+
+    private boolean isaSpare(int scoreIndex) {
+        return 10 == pins[scoreIndex] + pins[scoreIndex + 1];
+    }
+    private boolean isaStrike(int scoreIndex) {
+        return 10 == pins[scoreIndex];
     }
 }

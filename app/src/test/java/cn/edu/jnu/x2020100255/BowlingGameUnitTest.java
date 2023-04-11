@@ -31,11 +31,28 @@ public class BowlingGameUnitTest {
     }
     @Test
     public void testSpare() {
-        game.roll(3);
-        game.roll(7);//throw a spare
+        rollSpare();
         game.roll(6);
         repeatedRoll(0,17);
         assertEquals(22,game.score());
+    }
+    @Test
+    public void testAStrike() {
+        rollAStrike();
+        game.roll(3);
+        game.roll(4);
+        repeatedRoll(0,16);
+        assertEquals(24,game.score());
+    }
+
+    private void rollAStrike() {
+        game.roll(10);
+    }
+
+
+    private void rollSpare() {
+        game.roll(3);
+        game.roll(7);
     }
 
     private void repeatedRoll(int pin, int times) {
