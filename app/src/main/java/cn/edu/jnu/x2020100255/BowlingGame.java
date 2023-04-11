@@ -10,20 +10,25 @@ public class BowlingGame {
 
     public int score() {
         int totalScore=0;
-        for(int scoreIndex=0;scoreIndex<pins.length;scoreIndex++)
+        int currentFrameScoreIndex=0;
+        for(int currentFrame=0;currentFrame<10;currentFrame++)
         {
-            totalScore+=pins[scoreIndex];
+            totalScore+=pins[currentFrameScoreIndex];
 
-            if(scoreIndex<19)
-            {
-                if(isaSpare(scoreIndex)){
-                    totalScore+=pins[scoreIndex + 2];
-                }
-                if(isaStrike(scoreIndex)) {
-                    totalScore+=pins[scoreIndex + 1];
-                    totalScore+=pins[scoreIndex + 2];
-                }
+            if(isaStrike(currentFrameScoreIndex)){
+                totalScore+=pins[currentFrameScoreIndex+1];
+                totalScore+=pins[currentFrameScoreIndex+2];
             }
+            else if(isaSpare(currentFrameScoreIndex)){
+                totalScore+=pins[currentFrameScoreIndex+1];
+                totalScore+=pins[currentFrameScoreIndex+2];
+                currentFrameScoreIndex++;
+            }
+            else{
+                totalScore+=pins[currentFrameScoreIndex+1];
+                currentFrameScoreIndex++;
+            }
+            currentFrameScoreIndex++;
         }
         return totalScore;
     }
